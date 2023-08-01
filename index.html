@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant and Machinery Valuation</title>
+    <script src="jquery-3.6.3.js"></script>
+</head>
+<style>
+    section , table{
+        display: none;
+    }
+</style>
+<body>
+    <div>
+        <h1>Plant and Machinery Valuation</h1>
+        <select id="val-type" onchange="get_valuation()">
+            <option value="sL-method">Straight Line Method</option>
+            <option value="dB-method">Declining Balance Method</option>
+            <option value="soY-method">Sum of Years Digits Method</option>
+        </select>
+        <!-- <button onclick="get_valuation()">Submit</button> -->
+    </div>
+
+    <section class="sL-method" style="display: block;">
+        <h2>Straight Line Method</h2>
+        <label for="current-cost-sL">Current Cost: </label>
+        <input type="number" id="current-cost-sL"><br>
+        <label for="salvage-sL">Salvage value: </label>
+        <input type="number" id="salvage-sL"><br>
+        <label for="economic-life-sL">Economic Life: </label>
+        <input type="number" id="economic-life-sL"><br>
+        <button onclick="sL_method()">Submit</button>
+    </section>
+    <section class="dB-method">
+        <h2>Declining Balance Method</h2>
+        <label for="current-cost-dB">Current Cost: </label>
+        <input type="number" id="current-cost-dB"><br>
+        <label for="economic-life-dB">Economic Life: </label>
+        <input type="number" id="economic-life-dB"><br>
+        <label for="dB-type">Declining Balance Type</label>
+        <select name="dB-type" id="dB-type">
+            <option value="1">Single Declining method</option>
+            <option value="2">Double Declining method</option>
+            <option value="3">Triple Declining method</option>
+        </select><br>
+        <button onclick="dB_method()">Submit</button>
+    </section>
+    <section class="soY-method">
+        <h2>Sum of Years Digits Method</h2>
+        <label for="current-cost-soY">Current Cost: </label>
+        <input type="number" id="current-cost-soY"><br>
+        <label for="economic-life-soY">Economic Life: </label>
+        <input type="number" id="economic-life-soY"><br>
+        <button onclick="soY_method()">Submit</button>
+    </section>
+
+    <table padding="5" spacing="5" style = "background-color: black; width: fit-content;">
+        <thead>
+            <tr style = "background-color: grey">
+                <td>Year</td>
+                <td>Value @ beginning of year</td>
+                <td>Depreciation amount</td>
+                <td>Book value</td>
+            </tr>
+        </thead>
+        <tbody id="response" style="background-color: lightgrey; text-align: center;">
+
+        </tbody>
+    </table>
+</body>
+<script src="script.js"></script>
+</html>
