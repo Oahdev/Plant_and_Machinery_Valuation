@@ -18,19 +18,19 @@
             <option value="sL-method">Straight Line Method</option>
             <option value="dB-method">Declining Balance Method</option>
             <option value="soY-method">Sum of Years Digits Method</option>
+            <option value="sF-method">Sinking Fund Method</option>
         </select>
-        <!-- <button onclick="get_valuation()">Submit</button> -->
     </div>
 
     <section class="sL-method" style="display: block;">
         <h2>Straight Line Method</h2>
         <label for="current-cost-sL">Current Cost: </label>
         <input type="number" id="current-cost-sL"><br><br>
-        <label for="salvage-sL">Salvage value: </label>
+        <label for="salvage-sL">Salvage Value (Scrap Value): </label>
         <input type="number" id="salvage-sL"><br><br>
         <label for="economic-life-sL">Economic Life: </label>
         <input type="number" id="economic-life-sL"><br><br>
-        <button onclick="sL_method()">Submit</button>
+        <button onclick="sL_method()">Submit</button><br><br>
     </section>
     <section class="dB-method">
         <h2>Declining Balance Method</h2>
@@ -44,17 +44,31 @@
             <option value="2">Double Declining method</option>
             <option value="3">Triple Declining method</option>
         </select><br><br>
-        <button onclick="dB_method()">Submit</button>
+        <button onclick="dB_method()">Submit</button><br><br>
     </section>
     <section class="soY-method">
         <h2>Sum of Years Digits Method</h2>
         <label for="current-cost-soY">Current Cost: </label>
         <input type="number" id="current-cost-soY"><br><br>
+        <label for="salvage-soY">Salvage Value (Scrap Value): </label>
+        <input type="number" id="salvage-soY" placeholder="leave empty if not given"><br><br>
         <label for="economic-life-soY">Economic Life: </label>
         <input type="number" id="economic-life-soY"><br><br>
-        <button onclick="soY_method()">Submit</button>
+        <button onclick="soY_method()">Submit</button><br><br>
     </section>
-    <br><br>
+    <section class="sF-method">
+        <h2>Sinking Fund Method</h2>
+        <label for="current-cost-sF">Current Cost: </label>
+        <input type="number" id="current-cost-sF" value="500000"><br><br>
+        <label for="salvage-sL">Salvage Value (Scrap Value): </label>
+        <input type="number" id="salvage-sL" placeholder="leave empty if not given"><br><br>
+        <label for="economic-life-soY">Economic Life: </label>
+        <input type="number" id="economic-life-sF" value="10"><br><br>
+        <label for="interest-rate-sF">Interest Rate in Percentage: </label>
+        <input type="number" id="interest-rate-sF" value="10"><br><br>
+        <button onclick="sF_method()">Submit</button><br><br>
+    </section>
+
     <table padding="5" spacing="5" style = "background-color: black; width: fit-content;">
         <thead>
             <tr style = "background-color: grey">
