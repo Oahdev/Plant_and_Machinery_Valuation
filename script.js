@@ -108,45 +108,44 @@ function soY_method(){
 
 function sF_method(){
     var current_cost = parseInt($("#current-cost-sF").val());
+    if($("#salvage-sF").val() == ""){
+        var salvage = 0;
+    }else{
+        var salvage = parseInt($("#salvage-sF").val());
+    }
     var economic_life = parseInt($("#economic-life-sF").val());
     var interest_rate = parseInt($("#interest-rate-sF").val());
     var interest_rate = interest_rate / 100;
     //get sinking fund
-    function get_sf(interest,economic_life,current_cost){
-        var sf_top = interest;
-        var sf_bottom = (Math.pow((1+interest),economic_life)) - 1;
-        var sf = sf_top / sf_bottom;
-        var new_amount = sf * current_cost;
-
-        //get AA
-        // var aa_top = (Math.pow((1+interest_rate),economic_life)) - 1;
-        // var aa_bottom = interest;
-        // var aa = aa_top / aa_bottom;
-        // var new_amount = new_amount * aa;
+    var sf_top = interest_rate;
+    var sf_bottom = (Math.pow((1+interest_rate),economic_life)) - 1;
+    var sf = sf_top / sf_bottom;
+    var sf = sf * (current_cost - salvage);
+    //get AA
+    function get_aa(i,n,sf){
+        var aa_top = (Math.pow((1+i),n)) - 1;
+        var aa_bottom = i;
+        var aa = aa_top / aa_bottom;
+        var new_amount = sf * aa;
         return new_amount;
     }
-    // console.log(current_cost * get_sf(interest_rate,economic_life));
-
     var output = "";
     var value_begin_year = [];
     for (let i = 1; i < (economic_life+1); i++) {
         if(value_begin_year.length == 0){
-            value_begin_year.push(current_cost);
+            var book_value = get_aa(interest_rate,i,sf);
+            value_begin_year.push(book_value.toFixed(0));
         }else{
-            var array_index = value_begin_year.length - 1;
-            var value = value_begin_year[array_index];
-            var book_value = current_cost - get_sf(interest_rate,((economic_life - i)+1),current_cost);
+            var book_value = get_aa(interest_rate,i,sf);
             value_begin_year.push(book_value.toFixed(0));
         }
-        console.log(i);
     }
-    console.log(value_begin_year);
     for (let i = 1; i < (economic_life+1); i++) {
         output += "<tr>"+
         "<td>"+i+"</td>"+
-        "<td>"+(value_begin_year[(i-1)])+"</td>"+
-        "<td>"+depreciation+"</td>"+
-        "<td>"+((value_begin_year[(i-1)]) - depreciation)+"</td>"+
+        "<td>"+numberWithCommas(current_cost)+"</td>"+
+        "<td>"+numberWithCommas((get_aa(interest_rate,i,sf)).toFixed(0))+"</td>"+
+        "<td>"+numberWithCommas((current_cost - (get_aa(interest_rate,i,sf))).toFixed(0))+"</td>"+
         "</tr>"
     }
     $("table").show();
