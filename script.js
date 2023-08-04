@@ -30,9 +30,9 @@ function sL_method(){
     for (let i = 1; i < (economic_life+1); i++) {
         output += "<tr>"+
         "<td>"+i+"</td>"+
-        "<td>"+(value_begin_year[(i-1)])+"</td>"+
-        "<td>"+depreciation+"</td>"+
-        "<td>"+((value_begin_year[(i-1)]) - depreciation)+"</td>"+
+        "<td>"+numberWithCommas(value_begin_year[(i-1)])+"</td>"+
+        "<td>"+numberWithCommas(depreciation)+"</td>"+
+        "<td>"+numberWithCommas((value_begin_year[(i-1)]) - depreciation)+"</td>"+
         "</tr>"
     }
     $("table").show();
