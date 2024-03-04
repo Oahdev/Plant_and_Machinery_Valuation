@@ -24,7 +24,7 @@ function sL_method(){
             var array_index = value_begin_year.length - 1;
             var value = value_begin_year[array_index];
             var book_value =  value - depreciation;
-            value_begin_year.push(book_value);
+            value_begin_year.push(book_value.toFixed(0));
         }
     }
     for (let i = 1; i < (economic_life+1); i++) {
