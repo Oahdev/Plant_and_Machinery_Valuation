@@ -24,15 +24,15 @@ function sL_method(){
             var array_index = value_begin_year.length - 1;
             var value = value_begin_year[array_index];
             var book_value =  value - depreciation;
-            value_begin_year.push(book_value.toFixed(0));
+            value_begin_year.push(book_value);
         }
     }
     for (let i = 1; i < (economic_life+1); i++) {
         output += "<tr>"+
         "<td>"+i+"</td>"+
-        "<td>"+numberWithCommas(value_begin_year[(i-1)])+"</td>"+
-        "<td>"+numberWithCommas(depreciation)+"</td>"+
-        "<td>"+numberWithCommas((value_begin_year[(i-1)]) - depreciation)+"</td>"+
+        "<td>"+numberWithCommas(value_begin_year[(i-1)].toFixed(0))+"</td>"+
+        "<td>"+numberWithCommas(depreciation.toFixed(0))+"</td>"+
+        "<td>"+numberWithCommas((value_begin_year[(i-1)].toFixed(0)) - depreciation)+"</td>"+
         "</tr>"
     }
     $("table").show();
