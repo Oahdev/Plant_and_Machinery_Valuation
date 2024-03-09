@@ -32,7 +32,7 @@ function sL_method(){
         "<td>"+i+"</td>"+
         "<td>"+numberWithCommas(value_begin_year[(i-1)].toFixed(0))+"</td>"+
         "<td>"+numberWithCommas(depreciation.toFixed(0))+"</td>"+
-        "<td>"+numberWithCommas((value_begin_year[(i-1)].toFixed(0)) - depreciation)+"</td>"+
+        "<td>"+numberWithCommas(((value_begin_year[(i-1)]) - depreciation).toFixed(0))+"</td>"+
         "</tr>"
     }
     $("table").show();
