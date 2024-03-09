@@ -14,7 +14,7 @@ function sL_method(){
     var salvage = parseInt($("#salvage-sL").val());
     var economic_life = parseInt($("#economic-life-sL").val());
     //get deprciation amount
-    var depreciation = (current_cost - salvage) / (economic_life).toFixed(0);
+    var depreciation = (current_cost - salvage) / (economic_life);
     var output = "";
     var value_begin_year = [];
     for (let i = 1; i < (economic_life+1); i++) {
