@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <title>Plant and Machinery Valuation</title>
     <script src="jquery-3.6.3.js"></script>
 </head>
 <style>
+    body{
+        font-family: poppins;
+    }
+    input{
+        width: 270px !important;
+    }
     section , table{
         display: none;
     }
 </style>
-<body>
-    <div>
-        <h1>Plant and Machinery Valuation</h1>
-        <select id="val-type" onchange="get_valuation()">
+<body class="container mt-5">
+    <div class="mb-4">
+        <h1 class="mb-4">Plant and Machinery Valuation</h1>
+        <select class="form-select w-auto" id="val-type" onchange="get_valuation()">
             <option value="sL-method">Straight Line Method</option>
             <option value="dB-method">Declining Balance Method</option>
             <option value="soY-method">Sum of Years Digits Method</option>
@@ -23,62 +31,88 @@
     </div>
 
     <section class="sL-method" style="display: block;">
-        <h2>Straight Line Method</h2>
-        <label for="current-cost-sL">Current Cost: </label>
-        <input type="number" id="current-cost-sL"><br><br>
-        <label for="salvage-sL">Salvage Value (Scrap Value): </label>
-        <input type="number" id="salvage-sL"><br><br>
-        <label for="economic-life-sL">Economic Life: </label>
-        <input type="number" id="economic-life-sL"><br><br>
-        <button onclick="sL_method()">Submit</button><br><br>
+        <h2 class="mb-4">Straight Line Method</h2>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="current-cost-sL">Current Cost: </label>
+            <input class="form-control" type="number" id="current-cost-sL">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="salvage-sL">Salvage Value (Scrap Value): </label>
+            <input class="form-control" type="number" id="salvage-sL">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="economic-life-sL">Economic Life: </label>
+            <input class="form-control" type="number" id="economic-life-sL">
+        </div>
+        <button class="btn btn-primary mt-3" onclick="sL_method()">Submit</button>
     </section>
     <section class="dB-method">
-        <h2>Declining Balance Method</h2>
-        <label for="current-cost-dB">Current Cost: </label>
-        <input type="number" id="current-cost-dB"><br><br>
-        <label for="economic-life-dB">Economic Life: </label>
-        <input type="number" id="economic-life-dB"><br><br>
-        <label for="dB-type">Declining Balance Type</label>
-        <select name="dB-type" id="dB-type">
-            <option value="1">Single Declining method</option>
-            <option value="2">Double Declining method</option>
-            <option value="3">Triple Declining method</option>
-        </select><br><br>
-        <button onclick="dB_method()">Submit</button><br><br>
+        <h2 class="mb-4">Declining Balance Method</h2>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="current-cost-dB">Current Cost: </label>
+            <input class="form-control" type="number" id="current-cost-dB">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="economic-life-dB">Economic Life: </label>
+            <input class="form-control" type="number" id="economic-life-dB">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="dB-type">Declining Balance Type</label>
+            <select class="form-select w-auto" name="dB-type" id="dB-type">
+                <option value="1">Single Declining method</option>
+                <option value="2">Double Declining method</option>
+                <option value="3">Triple Declining method</option>
+            </select>
+        </div>
+        <button class="btn btn-primary mt-3" onclick="dB_method()">Submit</button>
     </section>
     <section class="soY-method">
-        <h2>Sum of Years Digits Method</h2>
-        <label for="current-cost-soY">Current Cost: </label>
-        <input type="number" id="current-cost-soY"><br><br>
-        <label for="salvage-soY">Salvage Value (Scrap Value): </label>
-        <input type="number" id="salvage-soY" placeholder="leave empty if not given"><br><br>
-        <label for="economic-life-soY">Economic Life: </label>
-        <input type="number" id="economic-life-soY"><br><br>
-        <button onclick="soY_method()">Submit</button><br><br>
+        <h2 class="mb-4">Sum of Years Digits Method</h2>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="current-cost-soY">Current Cost: </label>
+            <input class="form-control" type="number" id="current-cost-soY">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="salvage-soY">Salvage Value (Scrap Value): </label>
+            <input class="form-control" type="number" id="salvage-soY" placeholder="leave empty if not given">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="economic-life-soY">Economic Life: </label>
+            <input class="form-control" type="number" id="economic-life-soY">
+        </div>
+        <button class="btn btn-primary mt-3" onclick="soY_method()">Submit</button>
     </section>
     <section class="sF-method">
-        <h2>Sinking Fund Method</h2>
-        <label for="current-cost-sF">Current Cost: </label>
-        <input type="number" id="current-cost-sF"><br><br>
-        <label for="salvage-sF">Salvage Value (Scrap Value): </label>
-        <input type="number" id="salvage-sF" placeholder="leave empty if not given"><br><br>
-        <label for="economic-life-sF">Economic Life: </label>
-        <input type="number" id="economic-life-sF"><br><br>
-        <label for="interest-rate-sF">Interest Rate in Percentage: </label>
-        <input type="number" id="interest-rate-sF"><br><br>
-        <button onclick="sF_method()">Submit</button><br><br>
+        <h2 class="mb-4">Sinking Fund Method</h2>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="current-cost-sF">Current Cost: </label>
+            <input class="form-control" type="number" id="current-cost-sF">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="salvage-sF">Salvage Value (Scrap Value): </label>
+            <input class="form-control" type="number" id="salvage-sF" placeholder="leave empty if not given">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="economic-life-sF">Economic Life: </label>
+            <input class="form-control" type="number" id="economic-life-sF">
+        </div>
+        <div class="mb-3 d-flex flex-wrap w-50 justify-content-between align-items-center">
+            <label class="w-auto" for="interest-rate-sF">Interest Rate in Percentage: </label>
+            <input class="form-control" type="number" id="interest-rate-sF">
+        </div>
+        <button class="btn btn-primary mt-3" onclick="sF_method()">Submit</button>
     </section>
 
-    <table padding="5" spacing="5" style = "background-color: black; width: fit-content;">
-        <thead>
-            <tr style = "background-color: grey">
+    <table class="table table-striped table-bordered table-hover mt-5">
+        <thead class="table-dark">
+            <tr>
                 <td>Year</td>
                 <td>Value @ beginning of year</td>
                 <td>Depreciation amount</td>
                 <td>Book value</td>
             </tr>
         </thead>
-        <tbody id="response" style="background-color: lightgrey; text-align: center;">
+        <tbody class="table-group-divider text-center" id="response">
 
         </tbody>
     </table>
